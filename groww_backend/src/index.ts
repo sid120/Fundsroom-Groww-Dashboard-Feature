@@ -1,5 +1,7 @@
 import express from 'express';
 import { getDashboardData } from './controllers/dashboardController';
+import cors from 'cors';
+
 import { Pool } from 'pg';
 
 const app = express();

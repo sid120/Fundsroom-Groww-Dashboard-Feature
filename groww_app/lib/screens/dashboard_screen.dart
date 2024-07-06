@@ -17,13 +17,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   fetchData() async {
-    final response = await http.get(Uri.parse('http://localhost:3000/dashboard'));
-    if (response.statusCode == 200) {
-      setState(() {
-        data = json.decode(response.body);
-      });
-    } else {
-      throw Exception('Failed to load data');
+    try {
+      final response = await http.get(Uri.parse('http://localhost:3000/dashboard'));
+      if (response.statusCode == 200) {
+        setState(() {
+          data = json.decode(response.body);
+        });
+      } else {
+        throw Exception('Failed to load data');
+      }
+    } catch (error) {
+      print('Error fetching data: $error');
     }
   }
 
